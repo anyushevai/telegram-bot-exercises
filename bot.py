@@ -1,3 +1,4 @@
+import asyncio 
 import logging
 import re
 
@@ -389,6 +390,7 @@ def main() -> None:
     app.add_handler(CallbackQueryHandler(cb_save_topics, pattern=r"^save_topics:\d+$"))
 
     logger.info("Bot is running…")
+    asyncio.set_event_loop(asyncio.new_event_loop())   # ← добавь эту строку
     app.run_polling(drop_pending_updates=True)
 
 
